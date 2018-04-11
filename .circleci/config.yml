@@ -20,6 +20,12 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - run:
+          name: lisdir
+          command: sudo ls -al /usr/local
+      - run:
+          name: listopt
+          command: sudo ls -al /opt/android
       - run: 
           name: Check available Emulators
           command: sdkmanager --list --verbose | grep system-images
