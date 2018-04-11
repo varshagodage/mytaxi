@@ -6,6 +6,8 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import com.mytaxi.android_demo.activities.MainActivity;
 import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,6 +35,12 @@ public class ExampleInstrumentedTest {
 
     @Rule
     public ActivityTestRule<MainActivity> myactivityTestRule = new ActivityTestRule(MainActivity.class);
+
+    @BeforeClass
+    public static void grantPermision()
+    {
+        InstrumentationRegistry.getInstrumentation().getUiAutomation().executeShellCommand("pm grant com.mytaxi.android_demo android.permission.ACCESS_FINE_LOCATION");
+    }
 
     @Test
     public void loginCase() throws Exception {
